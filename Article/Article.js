@@ -85,6 +85,52 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Student Gets a Job at NASA',
+    date: 'Jan 20, 2020',
+    firstParagraph: `Its true folks, a student gets a job at NASA where he will be helping with the mission to the moon in 2024! `,
+
+    secondParagraph: `How did he get the job you ask? He was an exseptional student and always loved the moon thats how.`,
+
+    thirdParagraph: `I think this story an inspiration for all of us and we need to love the moon more. What are you waiting for? Go howl at the mooooon!`
+  },
+  {
+    title: 'The Greatest Word at Lambda',
+    date: 'Sep 20st, 2020',
+    firstParagraph: `We all know Lambda students are awesome but have you heard? The word?`,
+
+    secondParagraph: `A well a everybody's heard about the bird
+    B-b-b bird, bird, bird, b-bird's the word
+    A well a bird, bird, bird, the bird is the word
+    A well a bird, bird, bird, well the bird is the word
+    A well a bird, bird, bird, b-bird's the word
+    
+    A well a bird, bird, bird, well the bird is the word
+    A well a bird, bird, b-bird's the word
+    A well a bird, bird, bird, b-bird's the word
+    A well a bird, bird, bird, well the bird is the word
+    A well a bird, bird, b-bird's the word
+    
+    A well a don't you know about the bird?
+    Well, everybody knows that the bird is the word!
+    A well a bird, bird, b-bird's the word`,
+
+    thirdParagraph: `A well a everybody's heard about the bird
+    Bird, bird, bird, b-bird's the word
+    A well a bird, bird, bird, b-bird's the word
+    A well a bird, bird, bird, b-bird's the word
+    A well a bird, bird, b-bird's the word
+    
+    A well a bird, bird, bird, b-bird's the word
+    A well a bird, bird, bird, b-bird's the word
+    A well a bird, bird, bird, b-bird's the word
+    A well a bird, bird, bird, b-bird's the word
+    
+    A well a don't you know about the bird?
+    Well, everybody's talking about the bird!
+    A well a bird, bird, b-bird's the word
+    A well a bird`
   }
 ];
 
@@ -117,7 +163,7 @@ const data = [
     articleFeed.appendChild(createFeed(element.title, element.date, element.firstParagraph, element.secondParagraph, element.thirdParagraph))
   })
   // our re-usable component function
-  function createFeed(title, date, firstParagraph, secondParagraph, thirdParagraph)  {
+  function createFeed(title, date, firstParagraph, secondParagraph, thirdParagraph, )  {
     // define new elements
     const article = document.createElement("div");
     const artcTitle = document.createElement("h2");
@@ -126,7 +172,6 @@ const data = [
     const p2 = document.createElement("p");
     const p3 = document.createElement("p");
     const expandBtn = document.createElement("span");
-    
     
     // append
     
@@ -143,19 +188,24 @@ const data = [
     article.classList.add("article");
     artcTitle.classList.add("title");
     artcDate.classList.add("date");
-    p1.classList.add("p1")
-    p2.classList.add("p2")
-    p3.classList.add("p3")
-    expandBtn.classList.add("expandButton")
+    p1.classList.add("p1");
+    p2.classList.add("p2");
+    p3.classList.add("p3");
+    expandBtn.classList.add("expandButton");
     
     
   //   add content
-    title.textContent = title;
-    date.textContent = date;
+    artcTitle.textContent = title;
+    artcDate.textContent = date;
     p1.textContent = firstParagraph;
     p2.textContent = secondParagraph;
     p3.textContent = thirdParagraph;
-  
-      
+    expandBtn.textContent  = 'Expand';
+
+  // set up expand button
+    expandBtn.addEventListener("click", () => {
+        console.log('buttonClicked');
+        article.classList.toggle('article-open');
+      })
     return article;
   }
