@@ -98,17 +98,64 @@ const data = [
 
     <span class='expandButton'></span>
   </div>
-
-  Hint: You will need to use createElement more than once here!
-
-  Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
-
-  Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
-
-  Step 3: return the entire component.
-
-  Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
-
-  Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
-
 */
+  // Hint: You will need to use createElement more than once here!
+  
+  // Your function should take either an object as it's one argument, or 5 separate arguments mapping to each piece of the data object above.
+
+
+  // Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
+
+  // Step 3: return the entire component.
+
+  // Step 4: Map over the data, creating a component for each oject and add each component to the DOM as children of the 'articles' div.
+
+  // Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
+
+  const articleFeed = document.querySelector('.articles');
+  data.forEach(element => {
+    articleFeed.appendChild(createFeed(element.title, element.date, element.firstParagraph, element.secondParagraph, element.thirdParagraph))
+  })
+  // our re-usable component function
+  function createFeed(title, date, firstParagraph, secondParagraph, thirdParagraph)  {
+    // define new elements
+    const article = document.createElement("div");
+    const artcTitle = document.createElement("h2");
+    const artcDate = document.createElement("p");
+    const p1 = document.createElement("p");
+    const p2 = document.createElement("p");
+    const p3 = document.createElement("p");
+    const expandBtn = document.createElement("span");
+    
+    
+    // append
+    
+    article.appendChild(artcTitle);
+    article.appendChild(artcDate);
+    article.appendChild(p1);
+    article.appendChild(p2);
+    article.appendChild(p3);
+    article.appendChild(expandBtn);
+  
+    
+    // set class
+    
+    article.classList.add("article");
+    artcTitle.classList.add("title");
+    artcDate.classList.add("date");
+    p1.classList.add("p1")
+    p2.classList.add("p2")
+    p3.classList.add("p3")
+    expandBtn.classList.add("expandButton")
+    
+    
+  //   add content
+    title.textContent = title;
+    date.textContent = date;
+    p1.textContent = firstParagraph;
+    p2.textContent = secondParagraph;
+    p3.textContent = thirdParagraph;
+  
+      
+    return article;
+  }
